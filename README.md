@@ -359,7 +359,7 @@ Before opening this file, make sure you have:
 **Step 1 — Clone or Download this Repository**
 ```bash
 # Clone via Git
-git clone https://github.com/YOUR-USERNAME/powerbi-challenge-01.git
+git clone https://github.com/Tansiv/Power-BI-Assignment.git
 
 # OR click the green "Code" button above → "Download ZIP" → Extract it
 ```
@@ -392,9 +392,10 @@ git clone https://github.com/YOUR-USERNAME/powerbi-challenge-01.git
 ## 📁 Project Structure
 
 ```
-📦 powerbi-challenge-01/
+📦 Beverage Sales Performance Dashboard/
 │
-├── 📊 Beverage_Sales_Dashboard.pbix    ← Main Power BI report file
+├── 📂 powerbi-challenge-01/
+│   └── 📊 Beverage_Sales_Dashboard.pbix    ← Main Power BI report file
 │
 ├── 📂 data/
 │   └── 📗 Beverage_Sales_Data.xlsx     ← Source Excel file (3 tables)
