@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0f4c75,50:1b6ca8,100:00d4ff&height=200&section=header&text=Power%20BI%20Portfolio&fontSize=42&fontColor=ffffff&fontAlignY=38&desc=Business%20Intelligence%20Dashboards%20%7C%20Sales%20%26%20HR%20Analytics&descAlignY=58&descSize=18&animation=fadeIn"/>
 
@@ -29,47 +29,31 @@
 
 ## 📌 Table of Contents
 
-<div align="center">
-
-| # | Section |
-|:---:|:---|
-| 1 | [📖 Portfolio Overview](#-portfolio-overview) |
-| 2 | [🥤 Challenge 1 — Beverage Sales Dashboard](#-challenge-1--beverage-sales-dashboard) |
-| 3 | [👥 Challenge 2 — HR Analytics Dashboard](#-challenge-2--hr-analytics-dashboard) |
-| 4 | [🚀 How to Run Both Dashboards](#-how-to-run-both-dashboards) |
-| 5 | [📁 Project Structure](#-project-structure) |
-| 6 | [🛠️ Tools & Technologies](#️-tools--technologies) |
-| 7 | [💡 Key Skills Demonstrated](#-key-skills-demonstrated) |
-| 8 | [👤 Author](#-author) |
-
-</div>
+- [Portfolio Overview](#-portfolio-overview)
+- [Challenge 1 — Beverage Sales Dashboard](#-challenge-1--beverage-sales-dashboard)
+- [Challenge 2 — HR Analytics Dashboard](#-challenge-2--hr-analytics-dashboard)
+- [How to Run Both Dashboards](#-how-to-run-both-dashboards)
+- [Project Structure](#-project-structure)
+- [Tools & Technologies](#-tools--technologies)
+- [Key Skills Demonstrated](#-key-skills-demonstrated)
+- [Author](#-author)
 
 ---
 
 ## 📖 Portfolio Overview
 
-This repository contains **two complete Power BI dashboards** built inside a single `.pbix` file, each on its own report page. Together they demonstrate a full range of BI skills: data modeling, DAX measure design, time intelligence, and interactive visualization across two very different business domains — retail sales and human resources.
+This repository contains two Power BI dashboard projects in one report file. It demonstrates business intelligence skills across sales and HR analytics, including data modeling, DAX, filtering, trend analysis, and dashboard storytelling.
 
-<table>
-<tr>
-<td width="50%" valign="top">
+The Power BI report is stored in:
 
-### 🥤 Page 1 — Beverage Sales
-Tracks revenue, profit, and brand performance across divisions and districts for a beverage distribution business.
+- `powerbi-challenge-1 and 2/Beverage_Sales_Dashboard.pbix`
 
-**10 Tasks** | **5 DAX Measures** | **7 Visuals**
+### Report Pages
 
-</td>
-<td width="50%" valign="top">
-
-### 👥 Page 2 — HR Analytics
-Tracks headcount, attrition, satisfaction, and salary patterns across an entire employee lifecycle.
-
-**15 Tasks** | **11 DAX Measures** | **13 Visuals**
-
-</td>
-</tr>
-</table>
+| Page | Focus | Highlights |
+|:---|:---|:---|
+| 🥤 Beverage Sales | Beverage revenue, profit, and regional performance | Sales KPIs, trend analysis, brand comparisons |
+| 👥 HR Analytics | Employee headcount, attrition, satisfaction, hiring, and salary | Workforce metrics, turnover analysis, compensation insights |
 
 ---
 
@@ -77,34 +61,26 @@ Tracks headcount, attrition, satisfaction, and salary patterns across an entire 
 
 ### Overview
 
-An interactive sales performance dashboard analyzing beverage brand revenue, profit margins, and regional performance, built from three relational tables: `Data`, `Dates`, and `Cost`.
+An interactive beverage sales dashboard built on a clean model with sales, calendar, and cost data.
 
-### Data Model
+### Data Sources
 
-```
-Dates (1) ──── (*) Data (*) ──── (1) Cost
-```
+- `data/Beverage_Sales_Data_C1.xlsx`
 
 ### Key Measures
 
 ```dax
 Total Revenue = SUMX('Data', 'Data'[Units Sold] * 'Data'[Price per Unit])
-Total Profit  = [Total Revenue] - [Total Cost]
+Total Profit = [Total Revenue] - [Total Cost]
 ```
 
 ### Dashboard Features
 
-<div align="center">
-
-| Visual | Purpose |
-|:---|:---|
-| 🎚️ Slicers | Filter by Division, District, Beverage Brand |
-| 🃏 KPI Cards | Total Revenue, Units Sold, Average Price per Unit |
-| 📈 Line Charts | Month-wise and Day-wise sales trends |
-| 🍩 Donut Chart | Revenue share by Beverage Brand |
-| 📊 Clustered Bar | Profit vs Revenue comparison by brand |
-
-</div>
+- slicers for Division, District, and Beverage Brand
+- KPI cards for revenue, units sold, and average price
+- line charts for month and day sales trends
+- donut chart for brand revenue share
+- clustered bar chart for profit vs. revenue by brand
 
 ### Screenshots
 
@@ -121,36 +97,44 @@ Total Profit  = [Total Revenue] - [Total Cost]
 
 ### Overview
 
-A complete workforce analytics dashboard covering headcount, attrition, employee satisfaction, hiring trends, and salary distribution, built from a single comprehensive HR dataset spanning 37 columns and over 1,400 employee records since company inception.
+A workforce analytics dashboard built from a comprehensive HR dataset, offering insights into employee headcount, attrition, satisfaction, hiring trends, and salary distribution.
+
+### Data Sources
+
+- `data/HR_Employee_Data_C2.xlsx`
 
 ### Key Measures
 
 ```dax
 Total Current Employees =
-CALCULATE(DISTINCTCOUNT('HR_Data'[ID_employe]), 'HR_Data'[Attrition] = "No")
+CALCULATE(
+    DISTINCTCOUNT('HR_Data'[ID_employe]),
+    'HR_Data'[Attrition] = "No"
+)
 
 Termination Rate =
-DIVIDE([Total Terminated Employees], [Total Employees Since Inception], 0)
+DIVIDE(
+    [Total Terminated Employees],
+    [Total Employees Since Inception],
+    0
+)
 
 Total Salary Paid =
-CALCULATE(SUM('HR_Data'[Salary]), 'HR_Data'[Attrition] = "No")
+CALCULATE(
+    SUM('HR_Data'[Salary]),
+    'HR_Data'[Attrition] = "No"
+)
 ```
 
 ### Dashboard Features
 
-<div align="center">
-
-| Visual | Purpose |
-|:---|:---|
-| 🎚️ Slicers | Filter by Department, Gender, Employment Type, Hire Type |
-| 🃏 KPI Cards | Total Employees, Current, Terminated, Termination Rate, Total Salary |
-| 🍩 Donut Chart | Current employees by Gender |
-| 📊 Bar Charts | Education Levels, Job Satisfaction, Work Life Balance distribution |
-| 📊 Column Charts | Quarterly New Hires vs Quarterly Terminations |
-| 📈 Line Charts | Monthly Termination Trends and Monthly Salary Trends |
-| 🔵 Scatter Charts | Salary spread by Years at Company (Full-time vs Contractor) and by Total Working Years (Gender) |
-
-</div>
+- slicers for Department, Gender, Employment Type, and Hire Type
+- KPI cards for current employees, terminations, termination rate, and total salary
+- donut chart for gender distribution
+- bar charts for education level, job satisfaction, and work-life balance
+- column charts for quarterly hires vs. terminations
+- line charts for termination and salary trends
+- scatter charts for salary vs. experience analysis
 
 ### Screenshots
 
@@ -167,121 +151,88 @@ CALCULATE(SUM('HR_Data'[Salary]), 'HR_Data'[Attrition] = "No")
 
 ### Prerequisites
 
-- ✅ **Microsoft Power BI Desktop** (free) → [Download here](https://powerbi.microsoft.com/desktop/)
+- ✅ Microsoft Power BI Desktop (free)
 - ✅ Windows 10 or later
 
-### Setup Steps
+### Setup Instructions
 
-**Step 1 — Clone or Download**
+1. Clone or download the repository:
+
 ```bash
 git clone https://github.com/Tansiv/Power-BI-Assignment.git
 ```
 
-**Step 2 — Open the File**
-```
-1. Navigate to the downloaded folder
-2. Double-click Beverage_Sales_Dashboard.pbix
-3. Power BI Desktop will open with two pages at the bottom:
-      Page 1 → Beverage Sales Dashboard
-      Page 2 → HR Analytics Dashboard
-```
+2. Open the Power BI file:
 
-**Step 3 — If Data Refresh Fails**
-```
-1. Home → Transform Data → Data Source Settings
-2. Update the file paths to point to the /data folder on your machine
-3. Click Close & Apply
-```
+- `powerbi-challenge-1 and 2/Beverage_Sales_Dashboard.pbix`
 
-**Step 4 — Explore**
-```
-✅ Click between Page 1 and Page 2 using the tabs at the bottom
-✅ Use slicers on each page to filter the data
-✅ Click any chart to cross-filter related visuals
-```
+3. If the dashboard does not load data automatically:
+
+- open Power BI Desktop
+- go to `Home` → `Transform Data` → `Data Source Settings`
+- update the source paths to the files inside the `data/` folder
+- close and apply changes
+
+4. Explore the report:
+
+- select slicers to filter results
+- click visuals to cross-filter
+- review KPIs, trends, and comparisons on both pages
 
 ---
 
 ## 📁 Project Structure
 
 ```
-📦 Power-BI-Assignment/
-│
-├── 📊 Beverage_Sales_Dashboard.pbix
-│
-├── 📂 data/
-│   ├── 📗 Beverage_Sales_Data.xlsx
-│   └── 📗 HR_Employee_Data.xlsx
-│
-├── 📂 screenshots/
-│   ├── 📂 challenge-1-beverage-sales/
-│   │   ├── dashboard_overview.png
-│   │   ├── kpi_cards.png
-│   │   ├── line_charts.png
-│   │   ├── donut_chart.png
+Power-BI-Assignment/
+├── data/
+│   ├── Beverage_Sales_Data_C1.xlsx
+│   └── HR_Employee_Data_C2.xlsx
+├── powerbi-challenge-1 and 2/
+│   └── Beverage_Sales_Dashboard.pbix
+├── screenshots/
+│   ├── challenge-1-beverage-sales/
 │   │   ├── bar_chart.png
-│   │   └── data_model.png
-│   │
-│   └── 📂 challenge-2-hr-analytics/
+│   │   ├── dashboard_overview.png
+│   │   ├── data_model.png
+│   │   ├── donut_chart.png
+│   │   ├── kpi_cards.png
+│   │   └── line_charts.png
+│   └── challenge-2-hr-analytics/
 │       ├── dashboard_overview.png
-│       ├── kpi_cards.png
+│       ├── data_model.png
 │       ├── education_satisfaction_charts.png
-│       ├── quarterly_hires_terminations.png
+│       ├── kpi_cards.png
 │       ├── monthly_trends.png
+│       ├── quarterly_hires_terminations.png
 │       └── scatter_charts.png
-│
-└── 📄 README.md
+└── README.md
 ```
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-<div align="center">
-
 | Tool | Purpose |
 |:---|:---|
-| <img src="https://img.shields.io/badge/Power%20BI%20Desktop-F2C811?style=flat&logo=powerbi&logoColor=black"/> | Dashboard building & visualization |
-| <img src="https://img.shields.io/badge/DAX-0078D4?style=flat&logo=microsoft&logoColor=white"/> | Data modeling & calculated measures |
-| <img src="https://img.shields.io/badge/Power%20Query-217346?style=flat&logo=microsoft&logoColor=white"/> | Data transformation & cleaning |
-| <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=flat&logo=microsoftexcel&logoColor=white"/> | Source data files |
-| <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/> | Version control & portfolio hosting |
-
-</div>
+| Power BI Desktop | Report development and visualization |
+| DAX | Calculated measures and business logic |
+| Power Query | Data transformation and preparation |
+| Microsoft Excel | Source data storage |
+| GitHub | Version control and sharing |
 
 ---
 
 ## 💡 Key Skills Demonstrated
 
-- **Data Modeling** — building star-schema relationships between fact and dimension tables (Challenge 1) and working with single wide tables (Challenge 2)
-- **DAX Measure Design** — `SUMX`, `CALCULATE`, `DISTINCTCOUNT`, `DIVIDE`, and time-intelligence patterns across 16 total measures
-- **Time Intelligence** — Month-wise, Quarter-wise, and Day-wise trend analysis using Date Hierarchies
-- **Advanced Visuals** — scatter charts with proper Values/Details configuration for individual record-level analysis
-- **Power Query (ETL)** — data type correction, custom columns, and data cleaning
-- **Dashboard UX** — slicers, cross-filtering, KPI card design, and consistent color theory across both projects
-- **Business Storytelling** — translating raw HR and sales data into metrics decision-makers actually use (termination rate, profit margin, brand share)
+- data modeling with linked tables and calendar logic
+- DAX measure creation for revenue, profit, attrition, and salary metrics
+- interactive dashboard design with filters and cross-highlighting
+- sales and workforce analytics storytelling
+- report exploration using slicers and drill-through actions
 
 ---
 
 ## 👤 Author
 
-<div align="center">
-
-<br/>
-
-**Your Name Here**
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Tansiv)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR-PROFILE)
-
-*Power BI | Data Analytics | Business Intelligence*
-
-<br/>
-
----
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:00d4ff,50:1b6ca8,100:0f4c75&height=120&section=footer&animation=fadeIn"/>
-
-*⭐ If you found this portfolio helpful, please consider giving it a star!*
-
-</div>
+Power BI portfolio for dashboard analytics and business intelligence review.
